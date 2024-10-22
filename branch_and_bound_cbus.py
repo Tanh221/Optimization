@@ -30,7 +30,7 @@ def Try(k):
             current_cost + distances[x[k - 1]][0]
         )  # Add distance to 0 to return to starting point 0
         if total_cost < min_cost:
-            min_cost = total_cost
+            min_cost = total_cost    # update bound = min_cost
             best_path = x[:] + [0]
         return
 
