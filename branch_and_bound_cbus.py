@@ -22,6 +22,8 @@ visited = [False] * (2 * n + 1)
 load = 0
 current_cost = 0
 
+min_dis = min(distances[i][j] for i in range(2 * n + 1) for j in range(2 * n + 1))
+
 
 def Try(k):
     global load, current_cost, min_cost, best_path
@@ -30,7 +32,7 @@ def Try(k):
             current_cost + distances[x[k - 1]][0]
         )  # Add distance to 0 to return to starting point 0
         if total_cost < min_cost:
-            min_cost = total_cost    # update bound = min_cost
+            min_cost = total_cost
             best_path = x[:] + [0]
         return
 
@@ -43,8 +45,11 @@ def Try(k):
                 load += 1
             else:
                 load -= 1
+            if (
+                current_cost + (2 * n + 1 - k) * min_dis < min_cost
+            ):  # nếu đi 2n+1-k bước nữa mà min distance > min_cost thì đổi nhánh khác
 
-            Try(k + 1)
+                Try(k + 1)
 
             # Backtrack
             if v <= n:
