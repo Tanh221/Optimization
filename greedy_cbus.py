@@ -1,19 +1,32 @@
 # Input
-n = 5
-k = 3
-distances = [
-    [0, 5, 8, 11, 12, 8, 3, 3, 7, 5, 5],
-    [5, 0, 3, 5, 7, 5, 3, 4, 2, 2, 2],
-    [8, 3, 0, 7, 8, 8, 5, 7, 1, 6, 5],
-    [11, 5, 7, 0, 1, 5, 9, 8, 6, 5, 6],
-    [12, 7, 8, 1, 0, 6, 10, 10, 7, 7, 7],
-    [8, 5, 8, 5, 6, 0, 8, 5, 7, 3, 4],
-    [3, 3, 5, 9, 10, 8, 0, 3, 4, 5, 4],
-    [3, 4, 7, 8, 10, 5, 3, 0, 6, 2, 2],
-    [7, 2, 1, 6, 7, 7, 4, 6, 0, 5, 4],
-    [5, 2, 6, 5, 7, 3, 5, 2, 5, 0, 1],
-    [5, 2, 5, 6, 7, 4, 4, 2, 4, 1, 0],
-]
+# n = 3
+# k = 2
+
+# distances = [
+#     [0, 82, 15, 4, 95, 36, 32],
+#     [82, 0, 29, 18, 95, 14, 87],
+#     [15, 29, 0, 95, 70, 12, 76],
+#     [4, 18, 95, 0, 55, 5, 4],
+#     [95, 95, 70, 55, 0, 12, 28],
+#     [36, 14, 12, 5, 12, 0, 30],
+#     [32, 87, 76, 4, 28, 30, 0],
+# ]
+
+import sys
+
+sys.setrecursionlimit(3000)
+
+
+def Input():
+    [n, k] = [int(x) for x in sys.stdin.readline().split()]
+    d = []
+    for i in range(2 * n + 1):
+        r = [int(x) for x in sys.stdin.readline().split()]
+        d.append(r)
+    return n, k, d
+
+
+n, k, distances = Input()
 
 min_cost = float("inf")
 best_path = []
@@ -69,5 +82,7 @@ def greedy(k):
 
 
 greedy(1)
-print(f"Minimum cost: {min_cost}")
-print(f"Best path: {' '.join(map(str, best_path))}")
+# print(f"Minimum cost: {min_cost}")
+# print(f"Best path: {' '.join(map(str, best_path))}")
+print(n)
+print(*best_path[1:-1])
