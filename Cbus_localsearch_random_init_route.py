@@ -22,7 +22,7 @@ def generate_random_route(n, k, distances):
     dropped = set()
 
     pickup_points = list(range(1, n + 1))
-    random.shuffle(pickup_points)  # Randomly shuffle the pickup points
+    random.shuffle(pickup_points)  
 
     for pickup in pickup_points:
         if capacity < k:
