@@ -38,18 +38,22 @@ def print_solution(data, manager, routing, solution, runtime):
         index = solution.Value(routing.NextVar(index))
         if not routing.IsEnd(index):
             total_distance += routing.GetArcCostForVehicle(previous_index, index, 0)
+
+    # Add distance back to the depot
+    if len(path) > 1:
+        total_distance += routing.GetArcCostForVehicle(
+            previous_index, routing.Start(0), 0
+        )
+
     path.append(manager.IndexToNode(routing.Start(0)))
 
     print(data["n"])
-
     print(" ".join(map(str, path[1:-1])))
-
     print(total_distance)
-
     print("Runtime: ", runtime)
 
 
-def main():
+def Cbus():
     start_time = time.time()
 
     data = create_data_model(n, k, distances)
@@ -115,5 +119,4 @@ def main():
         print("No solution found!")
 
 
-if __name__ == "__main__":
-    main()
+Cbus()
