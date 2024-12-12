@@ -1,12 +1,12 @@
 from ortools.sat.python import cp_model
-
+import sys
 def Input():
-    n, k = map(int, input().split())
-    dis = []
-    for i in range(2*n + 1):
-        d = list(map(int, input().split()))
-        dis.append(d)
-    return n, k, dis
+    [n, k] = [int(x) for x in sys.stdin.readline().split()]
+    d = []
+    for i in range(2 * n + 1):
+        r = [int(x) for x in sys.stdin.readline().split()]
+        d.append(r)
+    return n, k, d
 
 def data(n, k, dis):
     data = {}
