@@ -26,7 +26,7 @@ min_dis = min(distances[i][j] for i in range(2 * n + 1) for j in range(2 * n + 1
 
 def Try(k):
     global load, current_cost, min_cost, best_path
-    if k == 2 * n + 1:  # All passengers picked up and dropped off
+    if k == 2 * n + 1:  
         total_cost = current_cost + distances[x[k - 1]][0]  # Add distance to 0
         if total_cost < min_cost:
             min_cost = total_cost
@@ -64,6 +64,6 @@ def is_valid_move(v, load, visited):
 
 Try(1)
 end = time.time()
-print(f"Minimum cost: {min_cost}")
-print(f"Best path: {' '.join(map(str, best_path))}")
-print("runtime: ", start - end)
+print(min_cost)
+print(*best_path[1:-1])
+print(start - end)
