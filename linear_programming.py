@@ -3,12 +3,12 @@ import time
 
 
 def Input():
-    n, k = map(int, input().split())
-    dis = []
+    [n, k] = [int(x) for x in sys.stdin.readline().split()]
+    d = []
     for i in range(2 * n + 1):
-        d = list(map(int, input().split()))
-        dis.append(d)
-    return n, k, dis
+        r = [int(x) for x in sys.stdin.readline().split()]
+        d.append(r)
+    return n, k, d
 
 
 def data(n, k, dis):
