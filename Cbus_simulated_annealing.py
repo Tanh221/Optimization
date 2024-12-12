@@ -2,7 +2,14 @@ import random
 import math
 import time
 
-
+def Input():
+    [n, k] = [int(x) for x in sys.stdin.readline().split()]
+    d = []
+    for i in range(2 * n + 1):
+        r = [int(x) for x in sys.stdin.readline().split()]
+        d.append(r)
+    return n, k, d
+    
 def calculate_distance(route, distances):
     return sum(distances[route[i]][route[i + 1]] for i in range(len(route) - 1))
 
@@ -30,7 +37,7 @@ def generate_initial_route(n, k):
     return route
 
 
-# Generate a neighboring solution by swapping two nodes
+# Generate neighbor solution by swapping two nodes
 def generate_neighbor(route, n):
     neighbor = route[:]
     i = random.randint(1, len(route) - 3)  # Avoid depot nodes
@@ -96,8 +103,7 @@ def simulated_annealing(n, k, distances, initial_temp, cooling_rate, max_iter):
     return best_route, best_distance
 
 
-n, k = map(int, input().split())
-distances = [list(map(int, input().split())) for _ in range(2 * n + 1)]
+n, k, distances = Input()
 
 # Parameters
 initial_temp = 10000.0
