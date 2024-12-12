@@ -101,16 +101,14 @@ def local_search(n, k, distances, initial_route):
     return best_route, best_distance
 
 
-if __name__ == "__main__":
-    n, k, distances = Input()
-    start = time.time()
+n, k, distances = Input()
+start = time.time()
 
-    initial_route = generate_random_route(n, k, distances)
-    optimized_route, optimized_distance = local_search(n, k, distances, initial_route)
+initial_route = generate_random_route(n, k, distances)
+optimized_route, optimized_distance = local_search(n, k, distances, initial_route)
 
-    print(n)
-    print(*optimized_route[1:-1])
-    print(optimized_distance)
-
-    end = time.time()
-    print(f"Execution Time: {end - start:.2f} seconds")
+print(n)
+print(*optimized_route[1:-1])
+print(optimized_distance)
+end = time.time()
+print(end - start)
